@@ -1,24 +1,40 @@
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react'
 import './App.css';
+import ButtonsSection from './components/ButtonsSection';
+import MessageBuilder from './components/MessageBuilder'
+import PreviewSection from './components/PreviewSection';
+
+export const Context = React.createContext(null);
 
 function App() {
+
+  const [message,setMessage] = useState('')
+  const [buttonList,setButtonList] = useState([])
+
+  useEffect(() => {
+
+    new Promise((resolve) => {
+      setTimeout(() => {
+ 
+        let jsonData = require('./utils/placeholdersData.json');
+        resolve(jsonData)
+      },[1000])
+    }).then(response => {
+     
+      setButtonList(response)
+    }).catch(err => console.log(err))
+
+  },[])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <Context.Provider value={{message,setMessage,buttonList}}>
+    <div className="container">
+    <MessageBuilder/>
+    <ButtonsSection/>
+    <PreviewSection/>
+     
     </div>
+    </Context.Provider>
   );
 }
 

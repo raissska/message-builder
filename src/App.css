@@ -1,38 +1,140 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+.message-container > input[type="radio"] {
+  position: absolute;
+  left: -200vw;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.message-container .tab-panel {
+  display: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.tab-panels{
+  position: relative;
+  width: 700px;
+}
+
+.message-container > input:first-child:checked ~ .tab-panels > .tab-panel:first-child {
+  display: block;
+}
+
+.message-container > label {
+  position: relative;
+  display: inline-block;
+  padding: 15px 20px;
+  border: 1px solid transparent;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+  border-bottom: 0;
+  cursor: pointer;
+  font-weight: 600;
+  background-color: #F5F5F5;
+  color: #3393DD;
+  font-size: 20px;
+}
+
+.message-container > input:checked + label {
+  border-color: #ccc;
+  border-bottom: 1px solid #fff;
+  margin-bottom: -1px;
+}
+
+.tab-panels > textarea:focus {
+  outline: none;
+}
+
+.tab-panels-button{
+  padding: 5px;
+  cursor: pointer;
+  outline: none;background-color: inherit;
+  border: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.tab-panels-button:hover > svg * {
+  stroke: #3393DD;;
+  transition:all 500ms ease;
+ 
+}
+
+.tab-panel {
+ 
+  border: 1px solid #ccc;
+  
+}
+textarea, .preview-section-container{
+  width: 700px;
+  height: 200px;
+  padding: 30px 15px;
+  font-size: 22px;
+  white-space: pre;
+}
+
+textarea {
+  
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  
+}
+
+.buttons-section{
+  margin-top: 24px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+
+.buttons-section-button:hover{
+  color: #3393DD;;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.buttons-section-button{
+  margin-right: 15px;
+  padding: 10px 25px;
+  border-radius: 16px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+
+.preview-section{
+  margin-top: 24px;
+  
+}
+
+.preview-section-title{
+  color: #3393DD;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.preview-section-container{
+ 
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  border-top-right-radius: 25px;
+  background-color:#3393DD ;
+  color: #fff;
+  
+}
+
+
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 30px;
+}
+
+.message-container {
+  max-width: 65em;
 }
